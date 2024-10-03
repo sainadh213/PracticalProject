@@ -1,5 +1,7 @@
 package com.Tutorialsninja.Base;
 
+import java.util.Date;
+
 import com.github.javafaker.Faker;
 
 public class JavaUtil {
@@ -30,5 +32,11 @@ public class JavaUtil {
 		String password = fk.internet().password(8, 10);
 		return password;
 	}
-
+    public String getTimestamp()
+    {
+    	Date dt=new Date();
+    	String date = dt.toString().replaceAll("[ :]", "_");
+    	return date;
+    			
+    }
 }

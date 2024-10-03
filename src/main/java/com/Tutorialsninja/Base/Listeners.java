@@ -37,13 +37,17 @@ public class Listeners implements ITestListener {
 	public void onTestStart(ITestResult result) {
 	
 		test = extent.createTest(result.getName());
+		//To print in extent reports
 		test.log(Status.INFO, result.getName() + " Started execution");
+		//To print in console
+		System.out.println(result.getName() + " Started execution");
 		
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		test.log(Status.PASS, result.getName() + " got passed");
+		System.out.println(result.getName() + " got passed");
 	}
 
 	@Override
@@ -51,6 +55,7 @@ public class Listeners implements ITestListener {
 		
 		test.log(Status.FAIL, result.getName() + " got failed");
 		test.log(Status.INFO, result.getThrowable());
+		System.out.println(result.getName() + " got failed");
 		try {
 			  Base.captureScreenshot(result.getName());
 		} catch (Throwable e) {
@@ -64,6 +69,7 @@ public class Listeners implements ITestListener {
 	public void onTestSkipped(ITestResult result) {
 		test.log(Status.SKIP, result.getName() + " got skipped");
 		test.log(Status.INFO, result.getThrowable());
+		System.out.println(result.getName() + " got skipped");
 	}
 
 	@Override

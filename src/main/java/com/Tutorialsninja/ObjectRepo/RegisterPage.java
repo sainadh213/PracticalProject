@@ -1,7 +1,5 @@
 package com.Tutorialsninja.ObjectRepo;
 
-
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,21 +7,21 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.Tutorialsninja.Base.JavaUtil;
 
-public class RigisterPage {
+public class RegisterPage {
 	WebDriver driver;
-	JavaUtil ju=new JavaUtil();
+	JavaUtil ju = new JavaUtil();
 
-	public RigisterPage(WebDriver driver)
+	public RegisterPage(WebDriver driver)
 
 	{
-		this.driver=driver;
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
 	@FindBy(xpath = "//span[text()='My Account']")
 	private WebElement myAccountBtn;
 	@FindBy(xpath = "//a[text()='Register']")
-	private WebElement rigisterBtn;
+	private WebElement registerBtn;
 	@FindBy(name = "firstname")
 	private WebElement firstNameTb;
 	@FindBy(name = "lastname")
@@ -43,12 +41,48 @@ public class RigisterPage {
 	@FindBy(xpath = "//div[contains(text(),'Warning')]")
 	private WebElement warningMessage;
 
+	
+
+	public WebElement getFirstNameWarning() {
+		return firstNameWarning;
+	}
+
+	public WebElement getLastNameWarning() {
+		return lastNameWarning;
+	}
+
+	public WebElement getEmailWarning() {
+		return emailWarning;
+	}
+
+	public WebElement getTelephoneWarning() {
+		return telephoneWarning;
+	}
+
+	public WebElement getPasswordWarning() {
+		return passwordWarning;
+	}
+
+	@FindBy(xpath = "//input[@id='input-firstname']/following-sibling::div")
+	private WebElement firstNameWarning;
+	@FindBy(xpath = "//input[@id='input-lastname']/following-sibling::div")
+	private WebElement lastNameWarning;
+	
+	
+
+	@FindBy(xpath = "//input[@id='input-email']/following-sibling::div")
+	private WebElement emailWarning;
+	@FindBy(xpath = "//input[@id='input-telephone']/following-sibling::div")
+	private WebElement telephoneWarning;
+	@FindBy(xpath = "//input[@id='input-password']/following-sibling::div")
+	private WebElement passwordWarning;
+
 	public WebElement getMyAccountBtn() {
 		return myAccountBtn;
 	}
 
-	public WebElement getRigisterBtn() {
-		return rigisterBtn;
+	public WebElement getRegisterBtn() {
+		return registerBtn;
 	}
 
 	public WebElement getFirstNameTb() {
@@ -86,11 +120,17 @@ public class RigisterPage {
 	public WebElement getWarningmessage() {
 		return warningMessage;
 	}
-	
-	public void registerAccount()
-	{
+
+	public void registerWithoutFilling() {
 		getMyAccountBtn().click();
-		getRigisterBtn().click();
+		getRegisterBtn().click();
+		getContinueBtn().click();
+
+	}
+
+	public void registerAccount() {
+		getMyAccountBtn().click();
+		getRegisterBtn().click();
 		getFirstNameTb().sendKeys(ju.getFirstname());
 		getLastNameTb().sendKeys(ju.getLastName());
 		getEmailTb().sendKeys(ju.getEmailAddress());
@@ -100,14 +140,12 @@ public class RigisterPage {
 		getConfirmPasswordTb().sendKeys(password);
 		getPrivacyCb().click();
 		getContinueBtn().click();
-		
-		
+
 	}
-	
-	public void registerAccountWithoutPrivacyCheckbox()
-	{
+
+	public void registerAccountWithoutPrivacyCheckbox() {
 		getMyAccountBtn().click();
-		getRigisterBtn().click();
+		getRegisterBtn().click();
 		getFirstNameTb().sendKeys(ju.getFirstname());
 		getLastNameTb().sendKeys(ju.getLastName());
 		getEmailTb().sendKeys(ju.getEmailAddress());
@@ -116,14 +154,12 @@ public class RigisterPage {
 		getPasswordTb().sendKeys(password);
 		getConfirmPasswordTb().sendKeys(password);
 		getContinueBtn().click();
-		
-		
+
 	}
-	
-	public void registerAccountWithRegistredEmail()
-	{
+
+	public void registerAccountWithRegistredEmail() {
 		getMyAccountBtn().click();
-		getRigisterBtn().click();
+		getRegisterBtn().click();
 		getFirstNameTb().sendKeys(ju.getFirstname());
 		getLastNameTb().sendKeys(ju.getLastName());
 		getEmailTb().sendKeys("sai@mailinator.com");
@@ -133,8 +169,7 @@ public class RigisterPage {
 		getConfirmPasswordTb().sendKeys(password);
 		getPrivacyCb().click();
 		getContinueBtn().click();
-		
-		
+
 	}
-	
+
 }

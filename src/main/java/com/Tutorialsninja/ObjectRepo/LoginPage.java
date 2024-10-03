@@ -1,16 +1,9 @@
 package com.Tutorialsninja.ObjectRepo;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.Tutorialsninja.Base.Base;
 
 public class LoginPage {
 	WebDriver driver;
@@ -66,7 +59,7 @@ public class LoginPage {
 		 * wait.until(ExpectedConditions.elementToBeClickable(getMyAccountBtn()));
 		 * element.click();
 		 */
-		Thread.sleep(10000);
+		//Thread.sleep(10000);
 		getMyAccountBtn().click();
 		getLoginIcon().click();
 		getLoginBtn().click();
@@ -83,7 +76,6 @@ public class LoginPage {
 	public void loginWithInValidDetails(String emailAddress, String password) {
 		getMyAccountBtn().click();
 		getLoginIcon().click();
-		;
 		getEmialAddressTb().sendKeys(emailAddress);
 		getpasswordTb().sendKeys(password);
 		getLoginBtn().click();

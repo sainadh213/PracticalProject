@@ -20,6 +20,7 @@ public class Base {
 	public static WebDriver driver;
 	FileUtil fu = new FileUtil();
 
+
 	@BeforeMethod
 	public void launchApp() throws Throwable {
 		String browser = fu.readDataFromPropertiesFile("browser");

@@ -24,11 +24,11 @@ public class Base {
 	public void launchApp() throws Throwable {
 		String browser = fu.readDataFromPropertiesFile("browser");
 		// System.out.println("Browser Name=" + browser);
-		// ChromeOptions cp = new ChromeOptions();
-		// cp.addArguments("--headless=new");
+		 ChromeOptions cp = new ChromeOptions();
+		 cp.addArguments("--headless=new");
 		if (browser.equalsIgnoreCase("chrome")) {
-			// driver = new ChromeDriver(cp);
-			driver = new ChromeDriver();
+			 driver = new ChromeDriver(cp);
+			//driver = new ChromeDriver();
 		}
 
 		else if (browser.equalsIgnoreCase("firefox")) {
